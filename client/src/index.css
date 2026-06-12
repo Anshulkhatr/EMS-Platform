@@ -2,10 +2,147 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Glassmorphism Slate (Default Dark) */
+  --theme-bg: #090d16;
+  --theme-sidebar: #0f172a;
+  --theme-navbar: rgba(15, 23, 42, 0.6);
+  --theme-card: rgba(15, 23, 42, 0.45);
+  --theme-border: rgba(255, 255, 255, 0.08);
+  --theme-border-muted: rgba(255, 255, 255, 0.04);
+  --theme-accent: #6366f1;
+  --theme-accent-hover: #4f46e5;
+  --theme-accent-glow: rgba(99, 102, 241, 0.15);
+  --theme-text: #f1f5f9;
+  --theme-text-muted: #94a3b8;
+  --theme-input-bg: rgba(2, 6, 23, 0.4);
+}
+
+[data-theme="light"] {
+  /* Elegant Light Mode */
+  --theme-bg: #f8fafc;
+  --theme-sidebar: #ffffff;
+  --theme-navbar: rgba(248, 250, 252, 0.7);
+  --theme-card: rgba(255, 255, 255, 0.85);
+  --theme-border: rgba(15, 23, 42, 0.08);
+  --theme-border-muted: rgba(15, 23, 42, 0.04);
+  --theme-accent: #4f46e5;
+  --theme-accent-hover: #3730a3;
+  --theme-accent-glow: rgba(79, 70, 229, 0.08);
+  --theme-text: #0f172a;
+  --theme-text-muted: #475569;
+  --theme-input-bg: #f1f5f9;
+}
+
+/* Global Tailwind Overrides for Light Theme compatibility */
+[data-theme="light"] .bg-slate-955,
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-slate-900,
+[data-theme="light"] .bg-slate-850,
+[data-theme="light"] .bg-slate-800,
+[data-theme="light"] .bg-\[\#0b1329\],
+[data-theme="light"] .bg-slate-900\/50,
+[data-theme="light"] .bg-slate-900\/80,
+[data-theme="light"] .bg-slate-950\/80 {
+  background-color: #ffffff !important;
+}
+
+[data-theme="light"] .bg-slate-950\/40,
+[data-theme="light"] .bg-slate-950\/20,
+[data-theme="light"] .bg-slate-950\/45,
+[data-theme="light"] .bg-slate-950\/60,
+[data-theme="light"] .bg-slate-900\/40,
+[data-theme="light"] .bg-slate-900\/20,
+[data-theme="light"] .bg-slate-900\/10 {
+  background-color: var(--theme-input-bg) !important;
+}
+
+[data-theme="light"] .border-slate-800,
+[data-theme="light"] .border-slate-800\/60,
+[data-theme="light"] .border-slate-800\/80,
+[data-theme="light"] .border-slate-855,
+[data-theme="light"] .border-slate-850,
+[data-theme="light"] .border-slate-900,
+[data-theme="light"] .border-slate-900\/60,
+[data-theme="light"] .border-slate-900\/50,
+[data-theme="light"] .border-\[\#1e293b\],
+[data-theme="light"] .border-slate-800\/40,
+[data-theme="light"] .border-indigo-900\/20,
+[data-theme="light"] .border-slate-900\/60 {
+  border-color: var(--theme-border) !important;
+}
+
+[data-theme="light"] .text-slate-50,
+[data-theme="light"] .text-slate-100,
+[data-theme="light"] .text-slate-200,
+[data-theme="light"] .text-slate-300,
+[data-theme="light"] .text-slate-400,
+[data-theme="light"] .text-slate-355,
+[data-theme="light"] .text-slate-350,
+[data-theme="light"] .text-slate-250 {
+  color: var(--theme-text) !important;
+}
+
+[data-theme="light"] .text-indigo-300,
+[data-theme="light"] .text-indigo-400 {
+  color: var(--theme-accent) !important;
+}
+
+[data-theme="light"] .text-slate-500,
+[data-theme="light"] .text-slate-600,
+[data-theme="light"] .text-slate-450 {
+  color: var(--theme-text-muted) !important;
+}
+
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  color: var(--theme-text) !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: var(--theme-text-muted) !important;
+  opacity: 0.75 !important;
+}
+
+[data-theme="cyberpunk"] {
+  /* Cyberpunk Neon */
+  --theme-bg: #030303;
+  --theme-sidebar: #0a0a0c;
+  --theme-navbar: rgba(10, 10, 12, 0.8);
+  --theme-card: rgba(13, 14, 18, 0.85);
+  --theme-border: rgba(6, 182, 212, 0.3);
+  --theme-border-muted: rgba(244, 63, 94, 0.25);
+  --theme-accent: #06b6d4;
+  --theme-accent-hover: #0891b2;
+  --theme-accent-glow: rgba(6, 182, 212, 0.3);
+  --theme-text: #ffffff;
+  --theme-text-muted: #a5f3fc;
+  --theme-input-bg: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="deep-space"] {
+  /* Deep Space */
+  --theme-bg: #05020c;
+  --theme-sidebar: #0c051a;
+  --theme-navbar: rgba(12, 5, 26, 0.8);
+  --theme-card: rgba(14, 6, 27, 0.75);
+  --theme-border: rgba(167, 139, 250, 0.25);
+  --theme-border-muted: rgba(236, 72, 153, 0.2);
+  --theme-accent: #a78bfa;
+  --theme-accent-hover: #8b5cf6;
+  --theme-accent-glow: rgba(167, 139, 250, 0.25);
+  --theme-text: #faf5ff;
+  --theme-text-muted: #d8b4fe;
+  --theme-input-bg: rgba(13, 3, 29, 0.5);
+}
+
 @layer base {
   body {
-    @apply bg-dark-bg text-gray-100 font-sans antialiased;
-    background-color: #090d16;
+    @apply font-sans antialiased transition-colors duration-300;
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
   }
 }
 
@@ -16,24 +153,24 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: var(--theme-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f2937;
+  background: var(--theme-border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #374151;
+  background: var(--theme-accent);
 }
 
 /* Glassmorphism utility */
 .glass {
-  background: rgba(15, 23, 42, 0.45);
+  background: var(--theme-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--theme-border);
 }
 
 /* Animations */
