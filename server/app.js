@@ -17,6 +17,8 @@ const reportRoutes = require('./routes/reportRoutes');
 const jobRoutes = require('./routes/jobRoutes');
 const emailRoutes = require('./routes/emailRoutes');
 const aiRoutes = require('./routes/aiRoutes');
+const payrollRoutes = require('./routes/payrollRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
 const path = require('path');
 const redis = require('./config/redis');
 
@@ -45,6 +47,8 @@ app.use('/api/reports', reportRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/emails', emailRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/payroll', payrollRoutes);
+app.use('/api/expenses', expenseRoutes);
 
 // Base route
 app.get('/', (req, res) => {

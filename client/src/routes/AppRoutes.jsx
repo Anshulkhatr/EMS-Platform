@@ -17,6 +17,9 @@ import DirectEmail from '../features/email/DirectEmail';
 import LandingPage from '../features/landing/LandingPage';
 import UnauthorizedPage from '../pages/UnauthorizedPage';
 import AIAnalytics from '../features/dashboard/AIAnalytics';
+import PayrollDashboard from '../features/payroll/PayrollDashboard';
+import OrgChartPage from '../features/org-chart/OrgChartPage';
+import ExpenseDashboard from '../features/expenses/ExpenseDashboard';
 
 const AppRoutes = () => {
   return (
@@ -66,7 +69,6 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
-        
         <Route
           path="ai-analytics"
           element={
@@ -75,7 +77,30 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
-        
+        <Route
+          path="payroll"
+          element={
+            <ProtectedRoute allowedRoles={['Admin', 'HR', 'Employee', 'Manager', 'Leadership']}>
+              <PayrollDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="org-chart"
+          element={
+            <ProtectedRoute allowedRoles={['Admin', 'HR', 'Manager', 'Leadership', 'Employee']}>
+              <OrgChartPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="expenses"
+          element={
+            <ProtectedRoute allowedRoles={['Admin', 'HR', 'Manager', 'Leadership', 'Employee']}>
+              <ExpenseDashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="settings"
           element={

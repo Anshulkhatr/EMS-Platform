@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { 
   LayoutDashboard, Users, CalendarDays, ClipboardCheck, Settings, LogOut, 
   FileText, BarChart3, Briefcase, Mail, Sparkles, Bell, X, Check, Trash2,
-  Info, AlertTriangle, CheckCircle2, Inbox
+  Info, AlertTriangle, CheckCircle2, Inbox, Banknote, Network, Receipt
 } from 'lucide-react';
 import axiosInstance from '../../services/axiosInstance';
 
@@ -80,6 +80,9 @@ const Sidebar = () => {
     { name: 'Leaves', path: '/leaves', icon: ClipboardCheck, roles: ['Admin', 'HR', 'Manager', 'Employee', 'Leadership'] },
     { name: 'Documents', path: '/documents', icon: FileText, roles: ['Admin', 'HR', 'Manager', 'Employee', 'Leadership'] },
     { name: 'Job Board', path: '/jobs', icon: Briefcase, roles: ['Admin', 'HR', 'Manager', 'Employee', 'Leadership'] },
+    { name: 'Payroll', path: '/payroll', icon: Banknote, roles: ['Admin', 'HR', 'Manager', 'Employee', 'Leadership'] },
+    { name: 'Org Chart', path: '/org-chart', icon: Network, roles: ['Admin', 'HR', 'Manager', 'Employee', 'Leadership'] },
+    { name: 'Expenses', path: '/expenses', icon: Receipt, roles: ['Admin', 'HR', 'Manager', 'Employee', 'Leadership'] },
     { name: 'Direct Email', path: '/emails', icon: Mail, roles: ['Admin', 'HR'] },
     { name: 'Reports', path: '/reports', icon: BarChart3, roles: ['Admin', 'HR', 'Manager', 'Leadership'] },
     { name: 'AI Analytics', path: '/ai-analytics', icon: Sparkles, roles: ['Admin', 'HR', 'Manager', 'Leadership'] },
