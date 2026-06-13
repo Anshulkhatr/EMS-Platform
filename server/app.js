@@ -50,9 +50,12 @@ app.use('/api/ai', aiRoutes);
 app.use('/api/payroll', payrollRoutes);
 app.use('/api/expenses', expenseRoutes);
 
-// Base route
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to the EMS Platform API' });
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// Fallback all other GET requests to the React index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
 // Error handling middleware

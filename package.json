@@ -4,13 +4,14 @@
   "description": "Employee Management System (EMS) Platform",
   "main": "server/server.js",
   "scripts": {
+    "start": "node server/server.js",
     "install-server": "npm install --prefix server",
     "install-client": "npm install --prefix client",
     "install-all": "npm install && npm run install-server && npm run install-client",
     "server": "npm start --prefix server",
     "client": "npm run dev --prefix client",
     "build-client": "npm run build --prefix client",
-    "build": "npm run build --prefix client",
+    "build": "npm run install-server && npm run install-client && npm run build-client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {},
