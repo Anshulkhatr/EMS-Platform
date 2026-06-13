@@ -1,0 +1,74 @@
+services:
+  # ---------------------------------------------------------------------------
+  # 1. Express API Backend Service
+  # ---------------------------------------------------------------------------
+  - type: web
+    name: ems-server
+    env: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false # User will input this on Render dashboard
+      - key: JWT_SECRET
+        generateValue: true # Generates a secure random key automatically
+      - key: JWT_EXPIRE
+        value: 24h
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 2525
+      - key: SMTP_USER
+        sync: false # User will input on dashboard
+      - key: SMTP_PASS
+        sync: false # User will input on dashboard
+      - key: SMTP_FROM
+        sync: false # User will input on dashboard
+      - key: REDIS_HOST
+        sync: false # User will input on dashboard (e.g., Upstash Redis)
+      - key: REDIS_PORT
+        sync: false # User will input on dashboard
+      - key: AWS_ACCESS_KEY_ID
+        sync: false # User will input on dashboard
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false # User will input on dashboard
+      - key: AWS_REGION
+        value: us-east-1
+      - key: AWS_BUCKET_NAME
+        sync: false # User will input on dashboard
+      - key: OPENROUTER_API_KEY
+        sync: false # User will input on dashboard
+      - key: OPENROUTER_MODEL
+        value: nvidia/nemotron-3-super-120b-a12b
+
+  # ---------------------------------------------------------------------------
+  # 2. React Client (Static Web App)
+  # ---------------------------------------------------------------------------
+  - type: web
+    name: ems-client
+    env: static
+    plan: free
+    rootDir: client
+    buildCommand: npm install && npm run build
+    publishPath: dist
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: ems-server
+          property: url
+        path: /api

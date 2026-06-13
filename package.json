@@ -1,0 +1,19 @@
+{
+  "name": "ems-platform",
+  "version": "1.0.0",
+  "description": "Employee Management System (EMS) Platform",
+  "main": "server/server.js",
+  "scripts": {
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install-all": "npm install && npm run install-server && npm run install-client",
+    "server": "npm start --prefix server",
+    "client": "npm run dev --prefix client",
+    "build-client": "npm run build --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
