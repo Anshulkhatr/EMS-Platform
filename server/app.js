@@ -54,7 +54,7 @@ app.use('/api/expenses', expenseRoutes);
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // Fallback all other GET requests to the React index.html
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
